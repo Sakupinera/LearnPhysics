@@ -20,7 +20,7 @@ using UnityEngine.Rendering;
 // TODO: handle merge/split when LEAF_OBJ_MAX > 1 and objects move
 // TODO: add sphere traversal
 
-namespace DataStructures
+namespace LearnPhysics
 {
 	public enum Axis
 	{

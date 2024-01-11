@@ -2,35 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DataStructures
+namespace LearnPhysics
 {
     public class BVHGameObjectAdapter : IBVHNodeAdapter<GameObject>
     {
-        private BVH<GameObject> _bvh;
-        Dictionary<GameObject, BVHNode<GameObject>> gameObjectToLeafMap = new Dictionary<GameObject, BVHNode<GameObject>>();
-        private event Action<GameObject> _onPositionOrSizeChanged;
-
-        BVH<GameObject> IBVHNodeAdapter<GameObject>.BVH
-        {
-            get
-            {
-                return _bvh;
-            }
-            set
-            {
-                _bvh = value;
-            }
-        }
-
-        //TODO: this is not used?
-        public void CheckMap(GameObject obj)
-        {
-            if (!gameObjectToLeafMap.ContainsKey(obj))
-            {
-                throw new Exception("missing map for shuffled child");
-            }
-        }
-
         public BVHNode<GameObject> GetLeaf(GameObject obj)
         {
             return gameObjectToLeafMap[obj];
@@ -75,5 +50,21 @@ namespace DataStructures
         {
             gameObjectToLeafMap.Remove(obj);
         }
+
+        BVH<GameObject> IBVHNodeAdapter<GameObject>.BVH
+        {
+            get
+            {
+                return _bvh;
+            }
+            set
+            {
+                _bvh = value;
+            }
+        }
+
+        private BVH<GameObject> _bvh;
+        Dictionary<GameObject, BVHNode<GameObject>> gameObjectToLeafMap = new Dictionary<GameObject, BVHNode<GameObject>>();
+        private event Action<GameObject> _onPositionOrSizeChanged;
     }
 }

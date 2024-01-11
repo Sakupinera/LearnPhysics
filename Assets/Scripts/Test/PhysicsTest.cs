@@ -1,20 +1,19 @@
-using DataStructures.Tests;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PhysicsTest : MonoBehaviour
+namespace LearnPhysics
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PhysicsTest : MonoBehaviour
     {
-        BVHTests test = new BVHTests();
-        StartCoroutine(test.Test9RadialRetrival());
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
     }
 }

@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TestTools;
-using DataStructures;
-using NUnit.Framework;
+using LearnPhysics;
 
-namespace DataStructures.Tests
+namespace LearnPhysics
 {
     public class BVHTests
     {
@@ -58,7 +57,6 @@ namespace DataStructures.Tests
             return new BVH<GameObject>(new BVHGameObjectAdapter(), objects);
         }
 
-        [UnityTest]
         public IEnumerator Test1CreateThroughConstruct()
         {
             List<GameObject> objects = SetupScene();
@@ -79,7 +77,6 @@ namespace DataStructures.Tests
             DestroyScene(objects);
         }
 
-        [UnityTest]
         public IEnumerator Test2Addition()
         {
             List<GameObject> objects = SetupScene(0);
@@ -106,7 +103,6 @@ namespace DataStructures.Tests
             DestroyScene(objects);
         }
 
-        [UnityTest]
         public IEnumerator Test3SingleItemPositionUpdate()
         {
             List<GameObject> objects = SetupScene();
@@ -131,7 +127,6 @@ namespace DataStructures.Tests
             DestroyScene(objects);
         }
 
-        [UnityTest]
         public IEnumerator Test4MultipleItemPositionUpdate()
         {
             List<GameObject> objects = SetupScene();
@@ -157,7 +152,6 @@ namespace DataStructures.Tests
             DestroyScene(objects);
         }
 
-        [UnityTest]
         public IEnumerator Test5AdditionAndUpdate()
         {
             List<GameObject> objects = SetupScene(0);
@@ -191,7 +185,6 @@ namespace DataStructures.Tests
             DestroyScene(objects);
         }
 
-        [UnityTest]
         public IEnumerator Test6Destroy()
         {
             List<GameObject> objects = SetupScene();
@@ -222,7 +215,6 @@ namespace DataStructures.Tests
             DestroyScene(objects);
         }
 
-        [UnityTest]
         public IEnumerator Test7DestroyAndUpdate()
         {
             List<GameObject> objects = SetupScene();
@@ -260,7 +252,6 @@ namespace DataStructures.Tests
             DestroyScene(objects);
         }
 
-        [UnityTest]
         public IEnumerator Test8AddDestroyAndUpdate()
         {
             List<GameObject> objects = SetupScene();
@@ -305,7 +296,6 @@ namespace DataStructures.Tests
             DestroyScene(objects);
         }
 
-        [UnityTest]
         public IEnumerator Test9RadialRetrival()
         {
             List<GameObject> objects = SetupScene(0);

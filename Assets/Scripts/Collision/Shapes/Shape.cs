@@ -3,44 +3,63 @@
 namespace LearnPhysics
 {
     /// <summary>
-    /// Shape
+    /// 形状基类
     /// </summary>
     public abstract class Shape
     {
-        #region 公共方法
+        /// <summary>
+        /// 构造方法
+        /// </summary>
+        /// <param name="mass"></param>
+        protected Shape(float mass)
+        {
+            m_id = IdFactory.AcquireId();
+            Mass = mass;
+        }
+
+        #region 对外方法
 
         /// <summary>
         /// 关联到Body
         /// </summary>
         /// <param name="body"></param>
         /// <returns></returns>
-        public void RigidBodyAttach(RigidBody body)
+        public void AttachRigidBody(RigidBody body)
         {
-
+            RigidBody = body;
         }
 
         /// <summary>
         /// 移除关联
         /// </summary>
-        public void RigidBodyDetach()
+        public void DetachRigidBody()
         {
-            
+            RigidBody = null;
         }
 
         /// <summary>
         /// 更新惯性张量
         /// </summary>
-        protected virtual void InertiaUpdate()
+        public virtual void UpdateInertia()
         {
-
+            Inertia = Matrix4x4.zero;
         }
 
         /// <summary>
         /// 更新包围盒
         /// </summary>
-        public virtual void BoundingBoxUpdate()
-        {
+        public abstract void UpdateBoundingBox();
 
+        #endregion
+
+        #region 内部方法
+
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        protected virtual void Initialize()
+        {
+            UpdateBoundingBox();
         }
 
         #endregion
@@ -50,12 +69,28 @@ namespace LearnPhysics
         /// <summary>
         /// id
         /// </summary>
-        public readonly ulong m_shapeId;
+        public ulong Id => m_id;
+        private readonly ulong m_id;
+
+        /// <summary>
+        /// 相对于刚体位置的局部坐标
+        /// </summary>
+        public Vector3 m_localPosition;
+
+        /// <summary>
+        /// 获取形状对应的位置
+        /// </summary>
+        public Vector3 Position => RigidBody.Position + m_localPosition;
+
+        /// <summary>
+        /// 基础形状
+        /// </summary>
+        public abstract PrimitiveType PrimitiveType { get; }
 
         /// <summary>
         /// 关联Body
         /// </summary>
-        public RigidBody RigidBody { get; private set; }
+        public RigidBody RigidBody { get; protected set; }
 
         /// <summary>
         /// 包围盒
@@ -71,11 +106,6 @@ namespace LearnPhysics
         /// 质量
         /// </summary>
         public float Mass { get; protected set; }
-
-        /// <summary>
-        /// 线速度
-        /// </summary>
-        public virtual Vector3 Velocity { get; protected set; }
 
         #endregion
     }

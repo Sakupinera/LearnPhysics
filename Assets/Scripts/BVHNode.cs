@@ -33,7 +33,7 @@ using System.Linq;
 using System.Diagnostics;
 using UnityEngine;
 
-namespace DataStructures
+namespace LearnPhysics
 {
 	public class BVHNode<T>
 	{
