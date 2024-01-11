@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace PhysicsDemo
+namespace LearnPhysics
 {
     /// <summary>
     /// Shape

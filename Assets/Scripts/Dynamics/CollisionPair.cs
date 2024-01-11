@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace PhysicsDemo
+namespace LearnPhysics
 {
     /// <summary>
-    /// 碰撞
+    /// 碰撞对
     /// </summary>
-    public struct CollisionResult
+    public struct CollisionPair
     {
         public RigidBody m_body1;
         public RigidBody m_body2;
