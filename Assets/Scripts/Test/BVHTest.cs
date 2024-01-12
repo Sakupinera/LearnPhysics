@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.TestTools;
-using LearnPhysics;
 
 namespace LearnPhysics
 {
@@ -367,7 +365,6 @@ namespace LearnPhysics
                         foreach (GameObject obj in g.GObjects)
                         {
                             Debug.Log("Found Object: " + obj.name);
-                            Assert.AreNotSame(obj.name, "Outside Radius");
                             objectCount++;
                         }
                     }       

@@ -14,6 +14,11 @@ namespace LearnPhysics
         // 碰撞点、法线、切线等
 
         /// <summary>
+        /// 碰撞点
+        /// </summary>
+        public Vector3 m_contactPoint;
+
+        /// <summary>
         /// 是否发生了碰撞
         /// </summary>
         public bool m_isTouching;
